@@ -22,12 +22,24 @@ export function App() {
 		setNewItem(e.target.value);
 	};
 
+	// Toggle todos
+	const handleToggle = (id, completed) => {
+		setTodos((currentTodos) => {
+			return currentTodos.map((todo) => {
+				if (todo.id === id) {
+					return { ...todo, completed };
+				}
+				return todo;
+			});
+		});
+	};
+
 	return (
 		<>
 			<div className="container my-4 p-2 border-2 mx-auto flex flex-col justify-center bg-red-100 max-w-2xl rounded-md">
 				<Header />
 				<Form handleSubmit={handleSubmit} handleNewItem={handleNewItem} />
-				<TodoList todosList={todos} />
+				<TodoList todosList={todos} handleToggle={handleToggle} />
 				<Footer />
 			</div>
 		</>

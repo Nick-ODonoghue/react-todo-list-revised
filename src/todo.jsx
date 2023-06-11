@@ -1,4 +1,4 @@
-const Todo = ({ todos }) => {
+const Todo = ({ todos, handleToggle }) => {
 	return (
 		<>
 			<h2 className=" text-center font-semibold text-lg mt-2 mb-6">ToDo List</h2>
@@ -8,8 +8,15 @@ const Todo = ({ todos }) => {
 					return (
 						<li key={todo.id} className="flex justify-between px-4 my-4 max-w-sm mx-auto">
 							<div className=" flex gap-4">
-								<input type="checkbox" checked={todo.completed} />
-								<p className={`self-center font-medium ${todo.completed ? "line-through font-light" : ""}`}>
+								<input
+									type="checkbox"
+									checked={todo.completed}
+									onChange={(e) => handleToggle(todo.id, e.target.checked)}
+									className=" accent-red-200"
+								/>
+								<p
+									className={`self-center font-medium ${todo.completed ? "line-through font-light text-red-600" : ""}`}
+								>
 									{todo.title}
 								</p>
 							</div>
