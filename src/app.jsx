@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./header";
 import Form from "./form";
 import TodoList from "./todoList";
@@ -6,16 +6,34 @@ import Footer from "./footer";
 
 export function App() {
 	const [newItem, setNewItem] = useState("");
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(() => {
+		const localValue = localStorage.getItem("LISTS");
+		if (localValue == null) return [];
+		return JSON.parse(localValue);
+	});
+
+	useEffect(() => {
+		localStorage.setItem("LISTS", JSON.stringify(todos));
+	}, [todos]);
 
 	// Form submit handler
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Check for duplicate todo and not allow it to be added a 2nd time
+		const isDuplicate = todos.some((todo) => todo.title === newItem);
+		if (isDuplicate) {
+			return setNewItem("");
+		}
+
 		setTodos((currentTodos) => {
+			// Check if new item input box is empty and return current todos, preventing an empty todo from being added to our todo list
+			if (!newItem) return currentTodos;
 			return [...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false }];
 		});
 		setNewItem("");
 	};
+
 	// Set new item handler
 	const handleNewItem = (e) => {
 		setNewItem(e.target.value);
