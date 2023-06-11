@@ -1,4 +1,4 @@
-const Todo = ({ todos, handleToggle }) => {
+const Todo = ({ todos, handleToggle, handleDelete }) => {
 	return (
 		<>
 			<h2 className=" text-center font-semibold text-lg mt-2 mb-6">ToDo List</h2>
@@ -15,12 +15,15 @@ const Todo = ({ todos, handleToggle }) => {
 									className=" accent-red-200"
 								/>
 								<p
-									className={`self-center font-medium ${todo.completed ? "line-through font-light text-red-600" : ""}`}
+									className={`self-center font-medium ${todo.completed ? "line-through font-light text-red-400" : ""}`}
 								>
 									{todo.title}
 								</p>
 							</div>
-							<button className="relative px-1 py-1 group ml-2 hover:text-white transition duration-300">
+							<button
+								onClick={() => handleDelete(todo.id)}
+								className="relative px-1 py-1 group ml-2 hover:text-white transition duration-300"
+							>
 								<span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 -translate-y-1 bg-red-500 group-hover:translate-x-0 group-hover:translate-y-0 rounded-md"></span>
 								<span className="absolute inset-0 w-full h-full border-2 border-black rounded-md"></span>
 								<span className="relative font-medium ">Delete</span>
