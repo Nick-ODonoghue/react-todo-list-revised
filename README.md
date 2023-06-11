@@ -1,6 +1,6 @@
 <h1 align="center">React ToDo List | NickOD.xyz</h1>
 
-![App Screenshot]()
+![App Screenshot](./public/ReactToDoList.png)
 
 <br>
 
@@ -18,6 +18,14 @@ This is a React ToDo List app. Unlike my other ToDo list app, I'm not following 
 
 ## Sticking Points & What I learned
 
+React Components & Passing Props
+
+- Having done this project using seperate components for everything, I gained a far better understanding of passing props from parent to child components. And feel I have a good understanding of the logic behind doing this now.
+
+UseState
+
+- This is still new and very interesting to me. So I'm still getting used to writing the logic for state setters. But feeling like the more I do it the quicker it is coming to me.
+
 ## Author
 
 - Website - [NickOD.xyz](http://www.NickOD.xyz)
@@ -26,6 +34,8 @@ This is a React ToDo List app. Unlike my other ToDo list app, I'm not following 
 <br>
 
 ## Useful Resources
+
+[React Docs](https://react.dev/learn)
 
 <br>
 

@@ -6,6 +6,7 @@ import Footer from "./footer";
 
 export function App() {
 	const [newItem, setNewItem] = useState("");
+
 	const [todos, setTodos] = useState(() => {
 		const localValue = localStorage.getItem("LISTS");
 		if (localValue == null) return [];
